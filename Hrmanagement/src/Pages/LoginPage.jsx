@@ -1,16 +1,15 @@
-// src/Pages/LoginPage.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Login.css'; // Make sure your styles are correctly set up
+import './Login.css'; 
 
 const LoginPage = () => {
-    const [isLogin, setIsLogin] = useState(true); // Toggle between login and signup
+    const [isLogin, setIsLogin] = useState(true);  
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [signupEmail, setSignupEmail] = useState("");
     const [signupPassword, setSignupPassword] = useState("");
 
-    // Handle login form submission
+   
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -19,9 +18,9 @@ const LoginPage = () => {
                 password: loginPassword,
             });
             if (response.data.success) {
-                localStorage.setItem('isAuthenticated', 'true'); // Save authentication status
+                localStorage.setItem('isAuthenticated', 'true'); 
                 alert("Login successful!");
-                window.location.href = "/Home"; // Redirect to home page
+                window.location.href = "/Home";
             } else {
                 alert(response.data.message);
             }
@@ -30,8 +29,7 @@ const LoginPage = () => {
             alert("Login failed!");
         }
     };
-
-    // Handle signup form submission
+ 
     const handleSignupSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -41,7 +39,7 @@ const LoginPage = () => {
             });
             if (response.data.success) {
                 alert("Signup successful! You can now login.");
-                setIsLogin(true); // Automatically switch to login after successful signup
+                setIsLogin(true); 
             } else {
                 alert(response.data.message);
             }
@@ -50,8 +48,7 @@ const LoginPage = () => {
             alert("Signup failed!");
         }
     };
-
-    // Toggle between login and signup
+ 
     const toggleAuthMode = () => {
         setIsLogin(!isLogin);
     };
